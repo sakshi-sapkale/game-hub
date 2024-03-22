@@ -20,19 +20,23 @@ export interface Game {
  const useGames = () => {
     const [game, setGames] = useState<Game[]>([]);
     const [error, setError] = useState("");
+    const [isLoading,setLoading] =  useState(false)
   
     useEffect(() => {
+      setLoading(true)
       apiClient
         .get<GameResponse>("/games")
         .then((res) => {
           setGames(res.data.results);
+          setLoading(false)
         })
         .catch((err: AxiosError) => {
           setError(err.message);
+          setLoading(false)
         });
     }, []);
 
-    return {game, error}
+    return {game, error, isLoading}
 }
 
 export default useGames
