@@ -10,7 +10,7 @@ export const GameCard = ({ game }: Props) => {
   console.log("parent_platform" + game.parent_platforms);
   console.log("platform:" + game.parent_platforms[0]);
   return (
-    <Card width="300px" borderRadius={10} overflow="hidden">
+    <Card>
       <Image src={game.background_image}></Image>
       <CardBody>
         <Heading fontSize="zxl">{game.name}</Heading>
