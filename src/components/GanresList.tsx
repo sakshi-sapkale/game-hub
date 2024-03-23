@@ -1,3 +1,4 @@
+import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenere";
 
 export const GanresList = () => {
@@ -6,11 +7,16 @@ export const GanresList = () => {
     <>
       {error && <span>Error fetching ganres</span>}
 
-      <ul>
+      <List>
         {data.map((ganre) => (
-          <li key={ganre.id}>{ganre.name}</li>
+          <ListItem key={ganre.id} paddingY="5px">
+            <HStack>
+              <Image src={ganre.image_background} boxSize="30px" />
+              <Text fontSize="lg">{ganre.name}</Text>
+            </HStack>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 };
