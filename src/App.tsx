@@ -25,6 +25,7 @@ function App() {
         <GridItem area="aside" padding={5}>
           <GanresList
             onSelectedGanres={(ganres) => setSelectedGanres(ganres)}
+            selectedGanre={selectedGanres}
           />
         </GridItem>
       </Show>

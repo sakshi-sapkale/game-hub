@@ -10,8 +10,9 @@ import useGenres, { Ganres } from "../hooks/useGenere";
 
 interface Props {
   onSelectedGanres: (ganres: Ganres) => void;
+  selectedGanre: Ganres | null;
 }
-export const GanresList = ({ onSelectedGanres }: Props) => {
+export const GanresList = ({ selectedGanre, onSelectedGanres }: Props) => {
   const { error, data, isLoading } = useGenres();
   if (isLoading) return <Spinner />;
   if (error) return null;
@@ -25,6 +26,7 @@ export const GanresList = ({ onSelectedGanres }: Props) => {
               <Button
                 variant="link"
                 fontSize="lg"
+                fontWeight={selectedGanre?.id === ganre.id ? "bold" : "normal"}
                 onClick={() => onSelectedGanres(ganre)}
               >
                 {ganre.name}
