@@ -7,8 +7,6 @@ interface Props {
 }
 
 export const GameCard = ({ game }: Props) => {
-  console.log("parent_platform" + game.parent_platforms);
-  console.log("platform:" + game.parent_platforms[0]);
   return (
     <Card>
       <Image src={game.background_image}></Image>
