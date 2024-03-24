@@ -7,6 +7,7 @@ import { Ganres } from "./hooks/useGenere";
 import { PlatformSelector } from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import { SortSelector } from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   ganre: Ganres | null;
@@ -41,23 +42,26 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem area="main" bg="gold">
-        <Flex marginBottom={5}>
-          <Box marginRight={5}>
-            <PlatformSelector
-              setSelectedPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+      <GridItem area="main">
+        <Box paddingLeft={10}>
+          <GameHeading gameQuery={gameQuery} />
+          <Flex marginBottom={5}>
+            <Box marginRight={5}>
+              <PlatformSelector
+                setSelectedPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+                selectedPlatform={gameQuery.platform}
+              />
+            </Box>
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
               }
-              selectedPlatform={gameQuery.platform}
             />
-          </Box>
-          <SortSelector
-            sortOrder={gameQuery.sortOrder}
-            onSelectSortOrder={(sortOrder) =>
-              setGameQuery({ ...gameQuery, sortOrder })
-            }
-          />
-        </Flex>
+          </Flex>
+        </Box>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
