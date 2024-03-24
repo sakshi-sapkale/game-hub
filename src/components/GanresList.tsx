@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -18,12 +19,21 @@ export const GanresList = ({ selectedGanre, onSelectedGanres }: Props) => {
   if (error) return null;
   return (
     <>
+      <Heading fontSize="2xl" marginBottom="7px">
+        Ganres
+      </Heading>
       <List>
         {data.map((ganre) => (
           <ListItem key={ganre.id} paddingY="5px">
             <HStack>
-              <Image src={ganre.image_background} boxSize="30px" />
+              <Image
+                src={ganre.image_background}
+                objectFit="cover"
+                boxSize="30px"
+              />
               <Button
+                whiteSpace="normal"
+                textAlign="left"
                 variant="link"
                 fontSize="lg"
                 fontWeight={selectedGanre?.id === ganre.id ? "bold" : "normal"}
